@@ -22,7 +22,7 @@ export class ListingComponent implements OnInit {
   @Input() update: boolean;
   @Input() delete: boolean;
 
-  baseURL = 'https://first-pro-5cc9a.firebaseio.com';
+  baseURL = 'https://first-project-fe877.firebaseio.com';
   rootNode = 'people';
 
   peopleCollection: Array<IPerson> = [];
