@@ -1,12 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output,Input, EventEmitter } from '@angular/core';
 import { DbService } from '../services/db.service';
 import { IPerson } from '../interfaces/iperson';
 
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
-
-
+ 
 
 import { PagerService } from '../services/pager.service';
 
@@ -19,8 +18,11 @@ import { PagerService } from '../services/pager.service';
 
 export class ListingComponent implements OnInit {
   @Output() modifyClicked = new EventEmitter<any>();
+  @Output() deleteClicked = new EventEmitter<any>();
+  @Input() update: boolean;
+  @Input() delete: boolean;
 
-  baseURL = 'https://first-project-fe877.firebaseio.com';
+  baseURL = 'https://first-pro-5cc9a.firebaseio.com';
   rootNode = 'people';
 
   peopleCollection: Array<IPerson> = [];
@@ -45,10 +47,13 @@ export class ListingComponent implements OnInit {
     // console.log(dataID);
     this.modifyClicked.emit(dataID);
   }
-
+ 
 //-----------------------------------------------------
 
-
+  deleteData(dataID) {
+    // console.log(dataID);
+    this.deleteClicked.emit(dataID);
+  }
 
 
 //-----------------------------------------------------
